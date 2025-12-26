@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Shield, Github, Twitter, Linkedin, Mail } from "lucide-react";
+import { Shield, Github, Linkedin, Mail, Facebook } from "lucide-react";
 import { motion } from "framer-motion";
 
 const Footer = () => {
@@ -49,14 +49,16 @@ const Footer = () => {
             </p>
             <div className="flex gap-3">
               {[
-                { icon: Twitter, href: "#" },
-                { icon: Linkedin, href: "#" },
-                { icon: Github, href: "#" },
+                { icon: Linkedin, href: "https://linkedin.com/company/pen-cyber" }, // Placeholder
+                { icon: Github, href: "https://github.com/Pentestero/pen-security" }, // Placeholder
                 { icon: Mail, href: "mailto:contact@pen-cyber.cm" },
+                { icon: Facebook, href: "https://facebook.com/pen-cyber" }, // Placeholder
               ].map((social, index) => (
                 <motion.a
                   key={index}
                   href={social.href}
+                  target="_blank" // Open in new tab
+                  rel="noopener noreferrer" // Security best practice
                   whileHover={{ y: -2 }}
                   className="w-10 h-10 rounded-lg bg-secondary flex items-center justify-center text-muted-foreground hover:text-primary hover:bg-primary/10 transition-colors"
                 >
