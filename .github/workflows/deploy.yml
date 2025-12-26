@@ -4,22 +4,18 @@ on:
   push:
     branches:
       - main
-  # Permet de lancer ce workflow manuellement depuis l'onglet Actions
   workflow_dispatch:
 
-# Définit les permissions du GITHUB_TOKEN pour autoriser le déploiement sur GitHub Pages
 permissions:
   contents: read
   pages: write
   id-token: write
 
-# Autorise un seul déploiement simultané
 concurrency:
   group: "pages"
   cancel-in-progress: false
 
 jobs:
-  # Job de build
   build:
     runs-on: ubuntu-latest
     steps:
@@ -36,13 +32,16 @@ jobs:
         env:
           VITE_SUPABASE_URL: ${{ secrets.SUPABASE_URL }}
           VITE_SUPABASE_ANON_KEY: ${{ secrets.SUPABASE_ANON_KEY }}
+      - name: Add 404 fallback for single-page app
+        run: |
+          if [ -d dist ]; then
+            cp dist/index.html dist/404.html
+          fi
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Le dossier à téléverser est 'dist' (le résultat de 'npm run build')
           path: ./dist
 
-  # Job de déploiement
   deploy:
     environment:
       name: github-pages
