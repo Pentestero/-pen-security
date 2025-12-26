@@ -8,7 +8,6 @@ export default defineConfig(({ mode }) => {
   const isProduction = mode === 'production';
 
   return {
-    base: isProduction ? "/-pen-security/" : "/",
     server: {
       host: "::",
       port: 8080,
