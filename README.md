@@ -1,73 +1,67 @@
-# Welcome to your Lovable project
+# PEN - Plateforme d'Éducation à la Cybersécurité
 
-## Project info
+**PEN** est une application web complète conçue pour rendre la cybersécurité simple, accessible et actionnable pour les particuliers, les étudiants et les PME au Cameroun et au-delà. La plateforme offre une suite d'outils et de ressources pour analyser les menaces, apprendre les bonnes pratiques et se protéger efficacement.
 
-**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
+## ✨ Fonctionnalités Implémentées
 
-## How can I edit this code?
+*   **Nouvelle Animation d'Introduction :** À l'ouverture du site, une animation de style "Matrix" apparaît, avec des lignes vertes circulantes et un texte animé, clignotant et s'assemblant ("Bienvenue en 2026 - Bonne année !").
+*   **Quiz sur la Cybersécurité :** Une nouvelle page `/quiz` offre un quiz interactif de 10 questions aléatoires, incluant des questions avec un contexte corporate/camerounais, et des animations pour les réponses.
+*   **Logos Mis à Jour :** Le logo `pen.png` est correctement affiché dans la barre de navigation (Navbar) et le pied de page (Footer).
+*   **Carte des Menaces du Cameroun :** La section des menaces en direct affiche désormais une carte du Cameroun, avec des données de menaces récupérées dynamiquement depuis Supabase.
+*   **Tableau de Bord Administrateur Étendu :** L'interface admin inclut maintenant la gestion complète (ajout, modification, suppression) des Guides, Outils et Menaces.
+*   **Pages Légales :** Les pages "Conditions d'Utilisation" (`/terms`) et "Politique de Confidentialité" (`/privacy`) sont implémentées, avec des liens actifs dans le pied de page.
+*   **Accès au Quiz :** La page "Quiz" est accessible via un lien dans la barre de navigation principale.
 
-There are several ways of editing your application.
+## 🛠️ Stack Technologique
 
-**Use Lovable**
+Ce projet est construit avec :
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
+*   **Frontend :** React, Vite, TypeScript
+*   **UI & Style :** Tailwind CSS, Shadcn UI, Framer Motion
+*   **Visualisation 3D/Particules :** `@react-three/fiber`, `@react-three/drei`, `tsparticles`
+*   **Cartographie :** `react-simple-maps`, `axios` pour GeoJSON
+*   **Génération PDF :** `jspdf`
+*   **Backend & Base de Données :** Supabase (PostgreSQL, Auth, Storage)
+*   **Déploiement :** Netlify (alternativement, GitHub Actions pour GitHub Pages)
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🚀 Comment l'utiliser (Localement)
 
-**Use your preferred IDE**
+1.  **Cloner le dépôt :**
+    ```bash
+    git clone https://github.com/Pentestero/-pen-security.git
+    cd -pen-security
+    ```
+2.  **Installer les dépendances :**
+    ```bash
+    npm install
+    ```
+3.  **Configurer Supabase :**
+    *   Créez un projet sur Supabase (voir les instructions détaillées fournies précédemment par l'IA).
+    *   Créez les tables `profiles`, `guides`, `tools`, `threats` dans votre éditeur SQL Supabase (remplacez `YOUR_ADMIN_EMAIL`).
+    *   Créez les buckets de stockage `guides-files` et `tools-files` avec les politiques RLS appropriées.
+4.  **Fichier d'environnement :**
+    *   Créez un fichier `.env.local` à la racine du projet et ajoutez vos clés Supabase :
+        ```
+        VITE_SUPABASE_URL="VOTRE_URL_SUPABASE"
+        VITE_SUPABASE_ANON_KEY="VOTRE_CLE_ANON_SUPABASE"
+        ```
+5.  **Lancer le serveur de développement :**
+    ```bash
+    npm run dev
+    ```
+    Ouvrez votre navigateur à `http://localhost:8080`.
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+## 🌐 Déploiement
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+Ce projet est configuré pour un déploiement facile sur Netlify :
 
-Follow these steps:
+1.  Connectez-vous à [Netlify](https://app.netlify.com/) avec votre compte GitHub.
+2.  Importez votre dépôt `pen-security`.
+3.  Configurez les variables d'environnement `VITE_SUPABASE_URL` et `VITE_SUPABASE_ANON_KEY` dans les paramètres de votre site Netlify (Build & deploy -> Environment).
+4.  Netlify s'occupera du reste.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+---
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+### ⚠️ Problèmes Actuels Connus
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
+1.  **Tableau de Bord Administrateur - Onglets manquants :** Les sections "Gérer les Guides" et "Gérer les Outils" ne s'affichent plus leurs contenus dans le tableau de bord administrateur. Ce problème est en cours de résolution.

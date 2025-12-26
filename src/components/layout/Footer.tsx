@@ -19,9 +19,8 @@ const Footer = () => {
       { label: "FAQ", href: "/faq" },
     ],
     legal: [
-      { label: "Mentions légales", href: "/mentions-legales" },
-      { label: "Confidentialité", href: "/confidentialite" },
-      { label: "Conditions d'utilisation", href: "/conditions" },
+      { label: "Politique de Confidentialité", href: "/privacy" },
+      { label: "Conditions d'Utilisation", href: "/terms" },
     ],
   };
 
@@ -38,7 +37,7 @@ const Footer = () => {
                 whileHover={{ rotate: 360 }}
                 transition={{ duration: 0.5 }}
               >
-                <Shield className="w-8 h-8 text-primary" />
+                <img src="/pen.png" alt="PEN Logo" className="w-8 h-8" />
               </motion.div>
               <span className="font-display font-bold text-2xl gradient-text">
                 PEN

@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { motion, AnimatePresence } from "framer-motion";
-import { Shield, Menu, X, Moon, Sun, Zap, Search, BookOpen, Wrench, Bot, FlaskConical } from "lucide-react";
+import { Shield, Menu, X, Moon, Sun, Zap, Search, BookOpen, Wrench, Bot, FlaskConical, CheckCircle2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useTheme } from "@/hooks/useTheme";
 import { cn } from "@/lib/utils";
@@ -13,6 +13,7 @@ const navLinks = [
   { href: "/outils", label: "Outils", icon: Wrench },
   { href: "/assistant", label: "IA Assistant", icon: Bot },
   { href: "/guides", label: "Guides", icon: BookOpen },
+  { href: "/quiz", label: "Quiz", icon: CheckCircle2 },
   { href: "/lab", label: "Lab", icon: FlaskConical },
 ];
 
@@ -54,7 +55,7 @@ const Navbar = () => {
               transition={{ duration: 0.5 }}
               className="relative"
             >
-              <Shield className="w-8 h-8 text-primary" />
+              <img src="/pen.png" alt="PEN Logo" className="w-8 h-8" />
               <div className="absolute inset-0 bg-primary/20 blur-xl rounded-full group-hover:bg-primary/40 transition-all" />
             </motion.div>
             <span className="font-display font-bold text-xl md:text-2xl gradient-text">
